@@ -6,12 +6,18 @@
 #include <stdlib.h>
 
 #define BIG 50000000UL
-atomic_uint counter = ATOMIC_VAR_INIT(0);
+uint32_t counter = 0;
+/* atomic_uint counter = ATOMIC_VAR_INIT(0); */ // the atomic way of dealing
+                                                // with race condition
+pthread_mutex_t lock =
+    PTHREAD_MUTEX_INITIALIZER; // using mutex to lock resources
 
 void *countBig(void *arg) {
 
   for (uint32_t i = 0; i < BIG; i++) {
-    atomic_fetch_add(&counter, 1);
+    pthread_mutex_lock(&lock);
+    counter++;
+    pthread_mutex_unlock(&lock);
   }
   return NULL;
 }
@@ -31,6 +37,6 @@ int main() {
     return 1;
   };
 
-  printf("counting has finished %u \n", atomic_load(&counter));
+  printf("counting has finished %u \n", counter);
   return 0;
 }
