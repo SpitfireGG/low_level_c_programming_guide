@@ -6,7 +6,6 @@
 typedef enum {
     TYPE_INT,   // For integers
     TYPE_STRING // For strings (char *)
-    // Add more types as needed (e.g., TYPE_FLOAT, TYPE_DOUBLE)
 } DataType;
 
 struct Queue_Node {
@@ -32,7 +31,8 @@ void Enqueue(Queue *q, void *data, DataType type) {
     newNode->data = data; // Store the pointer
     newNode->type = type; // Store the type
     newNode->next = NULL;
-    if (q->tail == NULL) { // Empty queue
+    if (q->tail == NULL) { // if the tail is empty, add the same node as the
+                           // head and the tail
         q->head = q->tail = newNode;
     } else { // Non-empty queue
         q->tail->next = newNode;
@@ -42,7 +42,7 @@ void Enqueue(Queue *q, void *data, DataType type) {
 
 void *Dequeue(Queue *q) {
     if (q->head == NULL) {
-        return NULL; // Empty queue
+        return NULL;
     }
 
     Qnode *temp = q->head;
@@ -51,7 +51,7 @@ void *Dequeue(Queue *q) {
     if (q->head == NULL) {
         q->tail = NULL;
     }
-    free(temp); // Free the node, not the data
+    free(temp);
     return value;
 }
 
@@ -59,7 +59,7 @@ void destroyQ(Queue *q) {
     while (q->head != NULL) {
         Qnode *temp = q->head;
         q->head = q->head->next;
-        free(temp); // Free the node, not the data
+        free(temp);
     }
     q->tail = NULL;
 }
@@ -91,26 +91,22 @@ int main() {
     struct Queue q;
     InitQueue(&q);
 
-    // Properly allocate and set the integer
     int *num = malloc(sizeof(int));
     *num = 44;
 
-    // Enqueue with type indicators
     Enqueue(&q, "string", TYPE_STRING);   // String literal
     Enqueue(&q, num, TYPE_INT);           // Pointer to int
     Enqueue(&q, "stringer", TYPE_STRING); // String literal
 
-    peek(&q); // Should print: string -> 44 -> stringer -> NULL
+    peek(&q);
 
-    // Clean up
     void *data;
     while ((data = Dequeue(&q)) != NULL) {
-        if (data == num) { // Free the allocated int
+        if (data == num) {
             free(data);
         }
-        // String literals don’t need freeing
     }
-    destroyQ(&q); // Just in case
+    destroyQ(&q);
 
     return 0;
 }
