@@ -14,3 +14,6 @@ Grinding C the heavy way—low-level mastery in progress.
 
 ## Latest
 - Fixed `String` struct segfault—dynamic strings (`src/structs/string.c`).
+
+## Ongoing
+- Writing a frame sniffer in c (capturing and analyzing frames)
