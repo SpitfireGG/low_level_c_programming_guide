@@ -33,8 +33,8 @@ More data structures are planned for future updates.
 - Developing a **network frame sniffer** in `/networking/` to capture and analyze packets in a CLI, inspired by tools like Wireshark.
 - Exploring low-level programming concepts, such as bit manipulation and memory optimization.
 
-## Getting Started
-
+## Getting Started: 
+- **alter and learn from  by**
 1. Clone the repository:
    ```bash
    git clone <repository-url>
