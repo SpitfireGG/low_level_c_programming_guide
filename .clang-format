@@ -1,3 +1,83 @@
+# Base style
 BasedOnStyle: LLVM
-IndentWidth: 4
 
+AllowShortIfStatementsOnASingleLine: false
+BinPackArguments: false           # Prevents squeezing macro args into one line
+BinPackParameters: false
+BreakBeforeBraces: Allman         # Braces on new lines (better for macros)
+ColumnLimit: 80                   # Soft wrap limit
+ContinuationIndentWidth: 4        # Indent for multiline macros
+IndentPPDirectives: None          # Don't indent preprocessor directives
+KeepEmptyLinesAtTheStartOfBlocks: false
+MacroBlockBegin: ""               # Customize if using macro blocks
+MacroBlockEnd: ""
+PointerAlignment: Right
+SortIncludes: false
+SpaceAfterCStyleCast: true
+SpacesInParentheses: false
+
+# Special settings for macros
+AlignAfterOpenBracket: true
+AlignOperands: true
+BreakBeforeBinaryOperators: NonAssignment
+
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+IndentCaseLabels: true
+NamespaceIndentation: Inner
+
+# Line length and breaks
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Empty
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+BreakBeforeTernaryOperators: true
+
+# Braces and spacing
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: MultiLine
+  AfterEnum: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+SpaceAfterLogicalNot: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2
+SpacesInCStyleCastParentheses: false
+SpacesInSquareBrackets: false
+
+
+# Preprocessor settings
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^<[a-z_]+\.h>'
+    Priority:        1
+  - Regex:           '^<.*\.h>'
+    Priority:        2
+  - Regex:           '^<.*>'
+    Priority:        3
+  - Regex:           '.*'
+    Priority:        4
+
+# Comments
+AlignTrailingComments: true
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: 1
+ReflowComments: true
+
+# Misc formatting
+AlignConsecutiveAssignments: Consecutive
