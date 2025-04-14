@@ -37,4 +37,4 @@ More data structures are planned for future updates.
 - **alter and learn from  by**
 1. Clone the repository:
    ```bash
-   https://github.com/SpitfireGG/C_guides.git
+   git clone https://github.com/SpitfireGG/C_guides.git
