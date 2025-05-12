@@ -12,6 +12,12 @@
 #define FILENAME "somefile.txt"
 #define TOTAL_BYTES_TO_WRITE (1024LL * 10LL)
 
+// NOTE: the unbuffered does far better when writing a very large byte to the
+// buffer, but buffered doesnot because the buffered I/O has to perform due to
+// factors like function calls , but fputs does not perform system calls when
+// wirting , here syscall by buffered is ~= 10Million times where unbuffered
+// does ~= > 2000 sys calls
+
 void perform_unbuffered_writes_(const char *filename, long long total_bytes)
 {
     int fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0666);
