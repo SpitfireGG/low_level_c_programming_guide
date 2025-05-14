@@ -24,8 +24,6 @@ More data structures are planned for future updates.
 
 ## Progress
 
-- [x] **Memory Allocation**: Dynamic memory management with `malloc`, `free`, etc. (`/advanced/allocation/`, `notes/allocation.md`).
-- [x] **Structs**: Pointers, packing, and alignment (`/basics/structs/`, `notes/structs.md`).
 - [ ] **System Calls**: Kernel-level interactions (work in progress).
 
 ## Currently writing
@@ -34,8 +32,8 @@ More data structures are planned for future updates.
 - Exploring low-level programming concepts, such as bit manipulation and memory optimization.
 
 ## Getting Started: 
-- **alter and learn from  by**
+- *Alter and learn from by**
 1. Clone the repository:
    ```bash
    git clone https://github.com/SpitfireGG/C_guides.git
-test
+   ```
