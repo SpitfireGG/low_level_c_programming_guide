@@ -1,7 +1,7 @@
 # x86-64_AT-T_guide
 Personal repository for learning the x86_64 assembly with AT&amp;T syntax
 
-**Why Learn Assembly for C?**
+**Learn Assembly For What?**
 
 Learning assembly isn't just for writing operating systems or device drivers anymore. For a C programmer, it gives you a deep understanding of:
 
