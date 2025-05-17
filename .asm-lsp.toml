@@ -1,12 +1,22 @@
 [default_config]
 version = "0.10.0"
-assembler = "gas"
-instruction_set = "x86-64"
+assembler = "nasm"
+instruction_set = "x86/x86-64"
 
 [default_config.opts]
-compiler = "as"
-compile_flags_txt = [
-    "--gstabs",
-]
+compiler = "nasm"
+compile_flags_txt = ["-f elf64"]
+diagnostics = true
+default_diagnostics = false
+
+[[project]]
+path = "/home/kenzo/Dev/LL/asm/x86-64_AT-T_guide/ch01"
+version = "0.10.0"
+assembler = "nasm"
+instruction_set = "x86/x86-64"
+
+[project.opts]
+compiler = "nasm"
+compile_flags_txt = ["-f elf64"]
 diagnostics = true
 default_diagnostics = false
