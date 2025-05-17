@@ -1,10 +1,6 @@
 # x86-64_AT-T_guide
 Personal repository for learning the x86_64 assembly with AT&amp;T syntax
 
-Okay, let's dive into the fascinating world of x86-64 assembly and how it connects to your goal of mastering C. Learning assembly *from the ground up* is a significant undertaking, but it provides an unparalleled understanding of how computers work and how your C code actually executes.
-
-It's not about being "dumb" – assembly is simply a much lower level of abstraction than C. It requires thinking about the hardware directly. Let's build this knowledge step-by-step.
-
 **Why Learn Assembly for C?**
 
 Learning assembly isn't just for writing operating systems or device drivers anymore. For a C programmer, it gives you a deep understanding of:
