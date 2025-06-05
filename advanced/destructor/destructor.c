@@ -4,6 +4,7 @@
 #include <string.h>
 
 #define BUF_SIZE 10
+#define KILL_ANIMAL __attribute__((cleanup()))
 
 typedef struct
 {
@@ -13,9 +14,10 @@ typedef struct
 
 } Animal;
 
-void freeer(char **ptr)
+void freeer(void *ptr_addr)
 {
-    printf("freeing %p\n", (void *) *ptr);
+    printf("freeing %p\n", (void *) ptr_addr);
+    void **ptr = (void **) ptr_addr;
     free(*ptr);
     *ptr = NULL;
 }
@@ -40,30 +42,29 @@ void fn1()
     printf("allocate 10 bytes on the heap %p\n", (void *) buffer);
 }
 
-void init_animal(char *name, char *home, uint8_t age)
+Animal *init_animal(char *name, char *home, uint8_t age)
 {
     /*     Animal a = {.animal = "kangaroo", .habitat = "home", .age = 19}; */
 
-    Animal b = {NULL, NULL, 0};
+    Animal *b = malloc(sizeof(Animal));
 
-    b.animal  = malloc(strlen(name) + 2);
-    b.habitat = malloc(strlen(home) + 2);
+    b->animal  = malloc(strlen(name) + 1);
+    b->habitat = malloc(strlen(home) + 1);
 
-    strcpy(b.animal, name);
-    strcpy(b.habitat, home);
+    strcpy(b->animal, name);
+    strcpy(b->habitat, home);
 
-    b.age = age;
+    b->age = age;
 
-    Animal *str_ptr = &b;
-
-    kill_animal(&b);
+    return b;
     /*     kill_animal(str_ptr); */  // gives error , double free
 }
 
 int main()
 {
     fn1();
-    init_animal("elephant", "home", 10);
+    Animal *animal __attribute__((cleanup(freeer))) =
+        init_animal("doggy", "shed", 10);
 
     return 0;
 }
